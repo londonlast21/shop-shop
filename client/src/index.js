@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import { reducer } from './utils/reducers';
@@ -10,7 +10,7 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducer);
 
-ReactDOM.render(
+render(
 <Provider store={store}>
   <App />
 </Provider>, document.getElementById('root'));
