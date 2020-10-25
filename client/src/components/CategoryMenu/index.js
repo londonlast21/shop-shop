@@ -3,13 +3,18 @@ import { useQuery } from '@apollo/react-hooks';
 import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-import {connect} from 'react-redux';
+import {connect, useSelector, useDispatch} from 'react-redux';
 
 
 
-function CategoryMenu({ categories, dispatch }) {
+function CategoryMenu() {
   
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+
+  const state = useSelector(state => state.categories)
+  const dispatch = useDispatch();
+  const categories = state.props.ca
+
 
   useEffect(() => {
     if (categoryData) {
@@ -55,8 +60,7 @@ function CategoryMenu({ categories, dispatch }) {
 };
 
 function mapStateToProps(state) {
-  const { categories } = state;
+  const categories  = state.categories;
   return { categories };
-};
-
+}
 export default connect(mapStateToProps, null)(CategoryMenu);
