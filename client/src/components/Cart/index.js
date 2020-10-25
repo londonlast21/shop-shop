@@ -8,13 +8,14 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
-import { connect, useSelector } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = ({ cart, dispatch }) => {
 
-    const state = useSelector(state => state.props)
+    const state = useSelector(state => state.cart)
+
 
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
     
@@ -24,10 +25,10 @@ const Cart = ({ cart, dispatch }) => {
           dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
         };
       
-        if (!state.cart.length) {
+        if (!state.length) {
           getCart();
         }
-      }, [state.cart.length, dispatch]);
+      }, [state.length, dispatch]);
 
     console.log(state);
 
@@ -109,7 +110,7 @@ const Cart = ({ cart, dispatch }) => {
 };
 
 function mapStateToProps(state) {
-  const { cart } = state;
+  const  cart  = state;
   return { cart };
 }
 
