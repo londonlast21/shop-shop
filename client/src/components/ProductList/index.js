@@ -10,9 +10,10 @@ import { connect } from 'react-redux';
 
 
 function ProductList({ products, dispatch}) {
-  
 
-  //const { currentCategory } = state;
+  this.store = this.store.props;
+
+  const { currentCategory } = this.props;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
@@ -37,16 +38,16 @@ function ProductList({ products, dispatch}) {
 
   function filterProducts() {
     if (!currentCategory) {
-      return state.products;
+      return this.products;
     }
 
-    return state.products.filter(product => product.category._id === currentCategory);
+    return this.products.filter(product => product.category._id === currentCategory);
   }
 
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
-      {state.products.length ? (
+      {this.products.length ? (
         <div className="flex-row">
             {filterProducts().map(product => (
                 <ProductItem

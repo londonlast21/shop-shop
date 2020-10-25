@@ -4,6 +4,7 @@ import { pluralize } from "../../utils/helpers"
 //import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import { connect } from 'react-redux';
 
 function ProductItem({ item, dispatch }) {
 
@@ -15,7 +16,7 @@ function ProductItem({ item, dispatch }) {
     quantity
   } = item;
 
-  const { cart } = this.store
+  const { cart } = this.props;
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
