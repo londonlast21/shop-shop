@@ -12,10 +12,13 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 function ProductList() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
+
   const state = useSelector(state => state.products);
   const dispatch = useDispatch();
 
-  const  { currentCategory }  = { state }
+  const  { currentCategory }  = useSelector(state => state.currentCategory);
+  console.log('here');
+  console.log(state);
 
   
 
@@ -23,7 +26,7 @@ function ProductList() {
     if(data) {
       dispatch({
            type: UPDATE_PRODUCTS,
-          products: state
+          products: data.products
         });
         data.products.forEach((product) => {
           idbPromise('products', 'put', product);
@@ -40,7 +43,7 @@ function ProductList() {
 
   function filterProducts() {
     if (!currentCategory) {
-      return this.products;
+      return data.products;
     }
 
     return this.products.filter(product => product.category._id === currentCategory);
@@ -73,7 +76,12 @@ function ProductList() {
 
 function mapStateToProps(state) {
   const products = state.products;
-  return { products };
+
+  console.log('secondhit');
+  console.log(products);
+  return  { products };
+
+  
 
 }
 
