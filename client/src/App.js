@@ -1,4 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
+import { Provider } from 'react-redux';
+import {createStore } from 'redux';
+import reducer, { useProductReducer } from './utils/reducers';
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
@@ -25,7 +29,10 @@ const client = new ApolloClient({
   uri: '/graphql',
 })
 
-function App() {
+export const store = createStore(useProductReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+class App extends Component {
+  render() {
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -48,5 +55,6 @@ function App() {
 
   );
 }
+};
 
 export default App;
