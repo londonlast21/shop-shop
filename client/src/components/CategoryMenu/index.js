@@ -13,6 +13,7 @@ function CategoryMenu() {
 
   const state = useSelector(state => state.categories)
   const dispatch = useDispatch();
+  const {categories} = state.props;
   
 
 
