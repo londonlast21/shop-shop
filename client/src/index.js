@@ -1,27 +1,23 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import { reducer, useProductReducer } from './utils/reducers';
-import thunk from 'redux-thunk';
+
 
 const rootReducer = combineReducers({
   reducer: reducer,
   useProductReducer: useProductReducer
 });
 
-const enhancers = compose(
-  applyMiddleware(thunk),
-  window.devToolsExtension ? window.devToolsExtension(): f => f
-);
 
-const store = createStore(rootReducer, enhancers);
+const store = createStore(rootReducer);
 
 
-render(
+ReactDOM.render(
 <Provider store={store}>
   <App />
 </Provider>, document.getElementById('root'));

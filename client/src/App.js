@@ -16,7 +16,8 @@ import { StoreProvider } from "./utils/GlobalState";
 import OrderHistory from "./pages/OrderHistory";
 import Success from "./pages/Success";
 
-function App() {
+class App extends Component {
+  render() {
   return (
     <Provider store={store}>
       <Router>
@@ -39,5 +40,5 @@ function App() {
 
   );
 };
-
+};
 export default App;
