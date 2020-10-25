@@ -11,9 +11,8 @@ import { connect } from 'react-redux';
 
 function ProductList({ products, dispatch}) {
 
-  this.store = this.store.props;
 
-  const { currentCategory } = this.props;
+  const { currentCategory } = this.store.props;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
