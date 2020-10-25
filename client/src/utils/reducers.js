@@ -12,7 +12,6 @@ import {
 } from "../utils/actions";
 
 
-// const initialState = ({ value = [], ...props}) => {
     const initialState = {
     data: {
     products: [],

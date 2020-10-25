@@ -15,7 +15,7 @@ function ProductItem({ item, dispatch }) {
     quantity
   } = item;
 
-  const { cart } = state
+  const { cart } = this.store
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)

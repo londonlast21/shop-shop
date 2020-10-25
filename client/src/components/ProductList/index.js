@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 function ProductList({ products, dispatch}) {
   
 
-  const { currentCategory } = state;
+  //const { currentCategory } = state;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 

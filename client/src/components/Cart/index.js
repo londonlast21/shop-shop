@@ -3,17 +3,19 @@ import CartItem from '../Cart/CartItem';
 import Auth from '../../utils/auth';
 import './style.css';
 import { idbPromise } from '../../utils/helpers';
-import { useStoreContext } from '../../utils/GlobalState';
+//import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
+import { connect } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
-const Cart = () => {
+const Cart = ({ cart, dispatch }) => {
+
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-    const [state, dispatch] = useStoreContext();
+    
     useEffect(() => {
         async function getCart() {
           const cart = await idbPromise('cart', 'get');
@@ -104,4 +106,10 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+function mapStateToProps(state) {
+  const { cart } = state;
+  return { cart };
+}
+
+
+export default connect(mapStateToProps, null)(Cart);
