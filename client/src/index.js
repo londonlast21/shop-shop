@@ -5,16 +5,8 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import * as serviceWorker from './serviceWorker';
-import { reducer, useProductReducer } from './utils/reducers';
-
-
-const rootReducer = combineReducers({
-  reducer: reducer,
-  useProductReducer: useProductReducer
-});
-
-
-const store = createStore(rootReducer);
+//import { reducer, useProductReducer } from './utils/reducers';
+import store from './store';
 
 
 ReactDOM.render(
