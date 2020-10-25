@@ -14,7 +14,7 @@ import {
 
 // const initialState = ({ value = [], ...props}) => {
     const initialState = {
-        data: {
+    data: {
     products: [],
     cart: [],
     cartOpen: false,
