@@ -13,14 +13,15 @@ import {
 
 
 // const initialState = ({ value = [], ...props}) => {
-    const initialState = useProductReducer({
+    const initialState = {
+        data: {
     products: [],
     cart: [],
     cartOpen: false,
     categories: [],
     currentCategory: '',
     
-});
+}};
 
 
 
@@ -90,7 +91,7 @@ export const reducers = (state = initialState, action) => {
 };
 
 export function useProductReducer(initialState) {
-    return useReducer(reducer, initialState);
+    return useReducer(reducers, initialState);
 }
 
 export default reducers;
