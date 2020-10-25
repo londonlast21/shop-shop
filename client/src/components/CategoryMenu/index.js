@@ -11,9 +11,9 @@ function CategoryMenu() {
   
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
-  const state = useSelector(state => state.categories)
+  const categories = useSelector(state => state.categories)
   const dispatch = useDispatch();
-  const categories = state;
+  //const categories = state;
   
 
 

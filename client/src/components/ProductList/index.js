@@ -6,13 +6,15 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif"
-import { connect } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 
 
-function ProductList({ products, dispatch}) {
+function ProductList() {
 
+  const products = useSelector(state => state.products);
+  const dispatch = useDispatch();
 
-  const { currentCategory } = this.store.props;
+  const { currentCategory } = this.state.props;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
