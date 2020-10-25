@@ -30,7 +30,7 @@ const Cart = ({ cart, dispatch }) => {
         }
       }, [state.length, dispatch]);
 
-    console.log(state);
+    
 
     useEffect(() => {
         if (data) {

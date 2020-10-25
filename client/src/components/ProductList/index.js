@@ -17,8 +17,7 @@ function ProductList() {
   const dispatch = useDispatch();
 
   const  { currentCategory }  = useSelector(state => state.currentCategory);
-  console.log('here');
-  console.log(state);
+ 
 
   
 
@@ -77,8 +76,6 @@ function ProductList() {
 function mapStateToProps(state) {
   const products = state.products;
 
-  console.log('secondhit');
-  console.log(products);
   return  { products };
 
   
