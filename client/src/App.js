@@ -17,24 +17,9 @@ import { StoreProvider } from "./utils/GlobalState";
 import OrderHistory from "./pages/OrderHistory";
 import Success from "./pages/Success";
 
-const client = new ApolloClient({
-  request: (operation) => {
-    const token = localStorage.getItem('id_token')
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
-  },
-  uri: '/graphql',
-})
-
-export const store = createStore(useProductReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-class App extends Component {
-  render() {
+function App() {
   return (
-    <ApolloProvider client={client}>
+    <Provider store={store}>
       <Router>
         <div>
           <StoreProvider>
@@ -51,10 +36,9 @@ class App extends Component {
           </StoreProvider>
         </div>
       </Router>
-    </ApolloProvider>
+    </Provider>
 
   );
-}
 };
 
 export default App;
