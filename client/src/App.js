@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Provider } from 'react-redux';
-import {createStore } from 'redux';
-import reducer, { useProductReducer } from './utils/reducers';
+import store from './store';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -12,17 +11,17 @@ import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
-import { StoreProvider } from "./utils/GlobalState";
 import OrderHistory from "./pages/OrderHistory";
 import Success from "./pages/Success";
+
+
 
 class App extends Component {
   render() {
   return (
-    <Provider store={store}>
-      <Router>
+    <Router>
         <div>
-          <StoreProvider>
+        <Provider store={store}>
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -33,10 +32,10 @@ class App extends Component {
             <Route exact path="/success" component={Success} />
             <Route component={NoMatch} />
           </Switch>
-          </StoreProvider>
+          </Provider>
         </div>
       </Router>
-    </Provider>
+
 
   );
 };
