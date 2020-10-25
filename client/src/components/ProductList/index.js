@@ -35,7 +35,7 @@ function ProductList() {
       idbPromise('products', 'get').then((products) => {
         dispatch({
           type: UPDATE_PRODUCTS,
-         products: state.products
+         products: data.products
        });
       });
     }

@@ -8,7 +8,7 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 
 function ProductItem(item) {
 
-  const state = useSelector(state => state.product._id)
+  const state = useSelector(state => state.item)
   console.log('from item list');
   console.log(state);
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function ProductItem(item) {
     quantity
   } = item;
 
-  const { cart } = cart;
+  const { cart } = useSelector;
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
@@ -65,6 +65,8 @@ function ProductItem(item) {
 
 function mapStateToProps(state) {
   const  items  = state;
+  console.log('third hit');
+  console.log(items);
   return { items };
 }
 
