@@ -11,10 +11,9 @@ function CategoryMenu() {
   
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
-  const categories = useSelector(state => state.categories)
+  const state = useSelector(state => state.categories)
   const dispatch = useDispatch();
-  //const categories = state;
-  
+  //const categories = state.categories;
 
 
   useEffect(() => {
@@ -46,7 +45,7 @@ function CategoryMenu() {
   return (
     <div>
       <h2>Choose a Category:</h2>
-      {categories.map(item => (
+      {state.map(item => (
         <button
           key={item._id}
           onClick={() => {

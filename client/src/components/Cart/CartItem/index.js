@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 
 const CartItem = ({ item, dispatch }) => {
 
+    
+
 
     const removeFromCart = item => {
         dispatch({

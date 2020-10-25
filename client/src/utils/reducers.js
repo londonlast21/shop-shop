@@ -13,14 +13,14 @@ import {
 
 
     const initialState = {
-    data: {
+
     products: [],
     cart: [],
     cartOpen: false,
     categories: [],
     currentCategory: '',
     
-}};
+};
 
 
 

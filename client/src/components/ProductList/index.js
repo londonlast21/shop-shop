@@ -10,19 +10,20 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 
 
 function ProductList() {
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const products = useSelector(state => state.products);
+  const state = useSelector(state => state.products);
   const dispatch = useDispatch();
 
-  const { currentCategory } = this.state.props;
+  const  { currentCategory }  = { state }
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  
 
   useEffect(() => {
     if(data) {
       dispatch({
            type: UPDATE_PRODUCTS,
-          products: data.products
+          products: state
         });
         data.products.forEach((product) => {
           idbPromise('products', 'put', product);
@@ -31,7 +32,7 @@ function ProductList() {
       idbPromise('products', 'get').then((products) => {
         dispatch({
           type: UPDATE_PRODUCTS,
-         products: products
+         products: state.products
        });
       });
     }
@@ -48,7 +49,7 @@ function ProductList() {
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
-      {this.products.length ? (
+      {state.products.length ? (
         <div className="flex-row">
             {filterProducts().map(product => (
                 <ProductItem
@@ -71,7 +72,7 @@ function ProductList() {
 }
 
 function mapStateToProps(state) {
-  const { products } = state;
+  const products = state.products;
   return { products };
 
 }
