@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Provider } from 'react-redux';
 import store from './store';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -14,11 +16,24 @@ import Nav from "./components/Nav";
 import OrderHistory from "./pages/OrderHistory";
 import Success from "./pages/Success";
 
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem('id_token')
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  },
+  uri: '/graphql',
+})
+
 
 
 class App extends Component {
   render() {
   return (
+    <ApolloProvider client={client}>
     <Router>
         <div>
         <Provider store={store}>
@@ -35,6 +50,7 @@ class App extends Component {
           </Provider>
         </div>
       </Router>
+      </ApolloProvider>
 
 
   );
