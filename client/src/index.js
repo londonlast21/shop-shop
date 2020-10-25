@@ -2,13 +2,14 @@ import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
 import App from './App';
-import { reducer } from './utils/reducers';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import * as serviceWorker from './serviceWorker';
-import { useProductReducer } from './utils/reducers';
+import { reducer, useProductReducer } from './utils/reducers';
+import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
+  reducer: reducer,
   useProductReducer: useProductReducer
 });
 
