@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 const CartItem = ({ item, dispatch }) => {
 
-    
+  
 
     const removeFromCart = item => {
         dispatch({
@@ -34,7 +34,11 @@ const CartItem = ({ item, dispatch }) => {
                 purchaseQuantity: parseInt(value)
             });
 
+            console.log(item);
+
+            
             idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+
         }
     };
 
