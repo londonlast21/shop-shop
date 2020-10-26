@@ -11,6 +11,6 @@ Add or remove items from your shopping cart, then use 'checkout' to make your pu
 
 ## Links:
 
-[GitHub Repo]
+[GitHub Repo](https://github.com/londonlast21/shop-shop)
 
-[Heroku Deployment]
+[Heroku Deployment](https://protected-island-56642.herokuapp.com/)
