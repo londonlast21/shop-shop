@@ -20,14 +20,18 @@ import {connect, useSelector, useDispatch} from 'react-redux';
 function Detail(state) {
   //const [state, dispatch] = useStoreContext();
   const dispatch = useDispatch();
+  console.log(state);
   
   const { id } = useParams();
+  console.log(id);
 
   const [currentProduct, setCurrentProduct] = useState({});
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const { products, cart } = state;
+  console.log(products);
+
 
   useEffect(() => {
     // already in global store
@@ -130,4 +134,10 @@ function Detail(state) {
   );
 };
 
-export default Detail;
+function mapStateToProps(state) {
+  const detail = state.location;
+  return { detail };
+  console.log(detail);
+};
+
+export default connect(mapStateToProps, null)(Detail);
