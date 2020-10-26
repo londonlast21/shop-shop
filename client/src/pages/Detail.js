@@ -17,11 +17,13 @@ import {connect, useSelector, useDispatch} from 'react-redux';
 
 
 
-function Detail(state) {
+function Detail() {
   //const [state, dispatch] = useStoreContext();
-  const dispatch = useDispatch();
+
+  const state = useSelector(state => state);
   console.log(state);
-  
+  const dispatch = useDispatch();
+
   const { id } = useParams();
   console.log(id);
 
@@ -29,13 +31,13 @@ function Detail(state) {
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const { products, cart } = state;
+  const { products, cart } = useSelector(state => state);
   console.log(products);
 
 
   useEffect(() => {
     // already in global store
-    if (state.length) {
+    if (state.cart.length) {
       setCurrentProduct(products.find(product => product._id === id));
     } 
     // retrieved from server
