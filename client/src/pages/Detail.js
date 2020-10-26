@@ -137,9 +137,13 @@ function Detail() {
 };
 
 function mapStateToProps(state) {
-  const detail = state.location;
+  const detail = state.cart;
+
+  console.log(state);
   return { detail };
-  console.log(detail);
+  
 };
 
-export default connect(mapStateToProps, null)(Detail);
+export default 
+connect(mapStateToProps)
+(Detail);
