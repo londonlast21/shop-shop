@@ -37,7 +37,7 @@ function Detail() {
 
   useEffect(() => {
     // already in global store
-    if (state.cart.length) {
+    if (cart.length) {
       setCurrentProduct(products.find(product => product._id === id));
     } 
     // retrieved from server
