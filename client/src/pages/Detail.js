@@ -37,14 +37,14 @@ function Detail() {
 
   useEffect(() => {
     // already in global store
-    if (cart.length) {
+    if (products.length) {
       setCurrentProduct(products.find(product => product._id === id));
     } 
     // retrieved from server
     else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
-        products: data.products
+        products: cart
       });
 
       data.products.forEach((product) => {
