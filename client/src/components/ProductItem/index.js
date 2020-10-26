@@ -8,10 +8,10 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 
 function ProductItem(item) {
 
-  const state = useSelector(state => state.item)
+  const state  = useSelector(state => state.cart)
   
   const dispatch = useDispatch();
-
+  
 
   const {
     image,
@@ -21,7 +21,10 @@ function ProductItem(item) {
     quantity
   } = item;
 
-  const { cart } = useSelector(state => state.cart);
+  const  cart  = state;
+  console.log(cart);
+
+
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
